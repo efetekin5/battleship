@@ -1,7 +1,7 @@
 const addAxisButton = () => {
     const button = document.createElement('button');
     button.classList.add('axisButton');
-    button.textContent = 'Vertical';
+    button.textContent = 'Horizontal';
 
     button.addEventListener('click', () => {
         if(button.textContent === 'Vertical') {

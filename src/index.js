@@ -2,6 +2,7 @@ import gameBoard from "./gameBoard";
 import createPlayer from "./createPlayer";
 import endGame from "./endGame";
 import addAxisButton from "./addAxisButton";
+import displayManualShips from "./displayManualShips";
 
 
 const pBoard = gameBoard();
@@ -83,10 +84,16 @@ placeManuallyButton.addEventListener('click', () => {
     if(axisButton === null) {
         addAxisButton();
 
-        const allPlayerCells = document.querySelector('div.cell[id^="p"]');
+        const allPlayerCells = document.querySelectorAll('div.cell[id^="p"]');
         allPlayerCells.forEach((cell) => {
-            cell.addEventListener('mouseover', () => {
-                
+            cell.addEventListener('mouseenter', (event) => {
+                displayManualShips(event, 5, false);
+            })
+        })
+
+        allPlayerCells.forEach((cell) => {
+            cell.addEventListener('mouseleave', (event) => {
+                displayManualShips(event, 5, true);
             })
         })
     }
