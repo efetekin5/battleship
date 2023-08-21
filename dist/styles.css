@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&family=Roboto:ital@1&display=swap');
+
+* {
+     margin: 0;
+     padding: 0;
+     border: 0;
+     box-sizing: border-box;
+}
+
+html {
+    height: 100vh;
+    width: 100vw;
+}
+
+.battleShip {
+    height: 100px;
+    width: 300px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    padding-left: 25px;
+    padding-top: 15px;
+}
+
+.playerBoard {
+    width: 550px;
+    height: 500px;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+}
+
+.aiBoard {
+    width: 550px;
+    height: 500px;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+}
+
+.boards {
+    height: 500px;
+    width: 1600px;
+    display: flex;
+    justify-content: center;
+    gap: 300px;
+    margin-left: 95px;
+    margin-top: 30px;
+}
+
+.cell {
+    border: 1px solid black;
+}
+
+.buttons {
+    margin-left: 234px;
+    margin-top: 20px;
+    height: 50px;
+    width: 600px;
+    display: flex;
+    column-gap: 20px;
+}
+
+.random {
+    height: 50px;
+    width: 220px;
+    font-size: 20px;
+    border-radius: 30px;
+    background-color: #0284c7;
+    color: white;
+}
+
+.manual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 220px;
+    font-size: 20px;
+    border-radius: 30px;
+    background-color: #0284c7;
+    color: white;
+}
+
+.boardHeaders {
+    display: flex;
+    width: 1160px;
+    height: 50px;
+    justify-content: space-between;
+    margin-left: 345px;
+    margin-top: 20px;
+}
+
+.yourBoard {
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+}
+
+.opponentBoard {
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+}
+
+.startButton {
+    position: absolute;
+    height: 50px;
+    width: 220px;
+    font-size: 40px;
+    border-radius: 30px;
+    background-color: #0284c7;
+    color: white;
+    bottom: 33px;
+    left: 1215px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.winPopup {
+    width: 800px;
+    height: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    row-gap: 50px;
+    margin-right: 120px;
+    margin-bottom: 70px;
+}
+
+.winnerText {
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+}
+
+.restartButton {
+    width: 240px;
+    height: 60px;
+    background-color: #0284c7;
+    color: white;
+    font-size: 40px;
+    border-radius: 30px;
+}
+
+.winBackground {
+    z-index: 1;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    backdrop-filter: blur(9px);
+    left: 0;
+    bottom: 0;
+    background-color: #0000002c;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.axisButton {
+    height: 50px;
+    width: 220px;
+    font-size: 30px;
+    border-radius: 30px;
+    background-color: #0284c7;
+    color: white;
+}
