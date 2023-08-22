@@ -32,12 +32,10 @@ const gameBoard = () => {
     }
 
     boardCopy = createRandomShips(board, 5);
-    /*
     boardCopy = createRandomShips(board, 4);
     boardCopy = createRandomShips(board, 3);
     boardCopy = createRandomShips(board, 3);
     boardCopy = createRandomShips(board, 2);
-    */
 
     updateBoard(boardCopy, boardId, isAiBoard);
     board = boardCopy;

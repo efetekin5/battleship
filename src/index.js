@@ -3,6 +3,8 @@ import createPlayer from "./createPlayer";
 import endGame from "./endGame";
 import addAxisButton from "./addAxisButton";
 import displayManualShips from "./displayManualShips";
+import createShip from "./createShip";
+import updateBoard from "./updateBoard";
 
 
 const pBoard = gameBoard();
@@ -59,10 +61,7 @@ startButton.addEventListener('click', () => {
         }
     }
 
-    /*
-        change the number back to 17
-    */
-    if(shipCells === 5) {
+    if(shipCells === 17) {
         const buttonsDiv = document.querySelector('.buttons');
         buttonsDiv.style.display = 'none';
         startButton.style.display = 'none';
@@ -87,13 +86,74 @@ placeManuallyButton.addEventListener('click', () => {
         const allPlayerCells = document.querySelectorAll('div.cell[id^="p"]');
         allPlayerCells.forEach((cell) => {
             cell.addEventListener('mouseenter', (event) => {
-                displayManualShips(event, 5, false);
+                let shipCells = 0;
+                for(let i = 0; i < 100; i += 1) {
+                    if(pBoard.board[i].storedShip !== false) {
+                        shipCells += 1;
+                    }
+                }
+
+                if(shipCells === 0) {
+                    displayManualShips(event, 5, false, pBoard.board);
+                } else if(shipCells === 5) {
+                    displayManualShips(event, 4, false, pBoard.board);
+                } else if(shipCells === 9) {
+                    displayManualShips(event, 3, false, pBoard.board);
+                } else if(shipCells === 12) {
+                    displayManualShips(event, 3, false, pBoard.board);
+                } else if(shipCells === 15) {
+                    displayManualShips(event, 2, false, pBoard.board);
+                }
             })
         })
 
         allPlayerCells.forEach((cell) => {
             cell.addEventListener('mouseleave', (event) => {
-                displayManualShips(event, 5, true);
+                displayManualShips(event, 5, true, pBoard.board);
+            })
+        })
+
+        allPlayerCells.forEach((cell) => {
+            cell.addEventListener('click', (event) => {
+                let newShip;
+                let isVertical;
+                const addedAxisButton = document.querySelector('.axisButton');
+
+                if(addedAxisButton.textContent === 'Vertical') {
+                    isVertical = true;
+                } else {
+                    isVertical = false;
+                }
+
+                let shipCells = 0;
+                for(let i = 0; i < 100; i += 1) {
+                    if(pBoard.board[i].storedShip !== false) {
+                        shipCells += 1;
+                    }
+                }
+
+                if(shipCells === 0) {
+                    newShip = createShip(5, isVertical);
+                } else if(shipCells === 5) {
+                    newShip = createShip(4, isVertical);
+                } else if(shipCells === 9) {
+                    newShip = createShip(3, isVertical);
+                } else if(shipCells === 12) {
+                    newShip = createShip(3, isVertical);
+                } else if(shipCells === 15) {
+                    newShip = createShip(2, isVertical);
+                }
+
+                const cellId = Number(event.target.id.slice(1));
+                for(let i = 0; i < newShip.length; i += 1) {
+                    if(pBoard.board)
+                }
+
+                const clickedCell = document.querySelector(`#p${cellId}`);
+                if(clickedCell.style.background !== 'rgb(185, 74, 74)') {
+                    pBoard.placeShip(newShip, cellId);
+                    updateBoard(pBoard.board, 'p', false);
+                }
             })
         })
     }

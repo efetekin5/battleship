@@ -34,6 +34,9 @@ const endGame = (pBoard, aiBoard, isPlayerWon) => {
         placeRandomButton.style.display = 'flex';
         placeRandomButton.style.removeProperty('margin-left');
 
+        const axisButton = document.querySelector('.axisButton');
+        axisButton.remove();
+
         winBackground.style.display = 'none';
     })
 }

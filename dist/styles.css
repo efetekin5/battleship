@@ -169,4 +169,7 @@ html {
     border-radius: 30px;
     background-color: #0284c7;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
