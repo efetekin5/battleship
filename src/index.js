@@ -145,8 +145,18 @@ placeManuallyButton.addEventListener('click', () => {
                 }
 
                 const cellId = Number(event.target.id.slice(1));
-                for(let i = 0; i < newShip.length; i += 1) {
-                    if(pBoard.board)
+                if(newShip.isVertical) {
+                    for(let i = 0; i < newShip.length * 10; i += 10) {
+                        if(pBoard.board[cellId + i].storedShip !== false) {
+                            return;
+                        }
+                    }
+                } else {
+                    for(let i = 0; i < newShip.length; i += 1) {
+                        if(pBoard.board[cellId + i].storedShip !== false) {
+                            return;
+                        }
+                    }
                 }
 
                 const clickedCell = document.querySelector(`#p${cellId}`);
