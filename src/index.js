@@ -29,31 +29,34 @@ placeRandomButton.addEventListener('click', () => {
 const handleClick = (event) => {
     const index = Number(event.target.id.slice(2))
     
-    player.attack(index, 'ai', true);
-    const isPlayerWon = aiBoard.allShipsSunk();
-    if(isPlayerWon) {
-        endGame(pBoard, aiBoard, true);
+    if(aiBoard.board[index].beenHit === false) {
+        player.attack(index, 'ai', true);
+        const isPlayerWon = aiBoard.allShipsSunk();
+        if(isPlayerWon) {
+            endGame(pBoard, aiBoard, true);
 
-        const allCells = document.querySelectorAll('div.cell[id^="ai"]');
-        allCells.forEach((cell) => {
-            cell.removeEventListener('click', handleClick);
-        })
-    }
+            const allCells = document.querySelectorAll('div.cell[id^="ai"]');
+            allCells.forEach((cell) => {
+                cell.removeEventListener('click', handleClick);
+            })
+        }
 
-    ai.aiAttack();
-    const isAiWon = pBoard.allShipsSunk();
-    if(isAiWon) {
-        endGame(pBoard, aiBoard, false);
+        ai.aiAttack();
+        const isAiWon = pBoard.allShipsSunk();
+        if(isAiWon) {
+            endGame(pBoard, aiBoard, false);
 
-        const allCells = document.querySelectorAll('div.cell[id^="ai"]');
-        allCells.forEach((cell) => {
-            cell.removeEventListener('click', handleClick);
-        })
+            const allCells = document.querySelectorAll('div.cell[id^="ai"]');
+            allCells.forEach((cell) => {
+                cell.removeEventListener('click', handleClick);
+            })
+        }
     }
 }
 
 const startButton = document.querySelector('.startButton');
 startButton.addEventListener('click', () => {
+
     let shipCells = 0;
     for(let i = 0; i < 100; i += 1) {
         if(pBoard.board[i].storedShip !== false) {
@@ -77,6 +80,7 @@ startButton.addEventListener('click', () => {
 })
 
 placeManuallyButton.addEventListener('click', () => {
+
     placeRandomButton.style.display = 'none';
 
     const axisButton = document.querySelector('.axisButton');

@@ -44,7 +44,14 @@ const gameBoard = () => {
   const receiveAttack = (cordinates, boardId, isAiBoard) => {
     if (board[cordinates].storedShip !== false) {
       board[cordinates].beenHit = true;
-      board[cordinates].storedShip.hit(cordinates, board);
+
+      let newHitCount = board[cordinates].storedShip.hitCount;
+      newHitCount += 1;
+      board[cordinates].storedShip.hitCount = newHitCount;
+      if(board[cordinates].storedShip.hitCount === board[cordinates].storedShip.length) {
+        board[cordinates].storedShip.sunk = true;
+      }
+
       updateBoard(board, boardId, isAiBoard);
     } else {
       board[cordinates].beenHit = true;
