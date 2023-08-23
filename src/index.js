@@ -85,7 +85,7 @@ placeManuallyButton.addEventListener('click', () => {
 
     const axisButton = document.querySelector('.axisButton');
     if(axisButton === null) {
-        addAxisButton();
+        addAxisButton(pBoard.board);
 
         const allPlayerCells = document.querySelectorAll('div.cell[id^="p"]');
         allPlayerCells.forEach((cell) => {

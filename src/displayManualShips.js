@@ -49,15 +49,13 @@ const displayManualShips = (event, shipLength, revert, board) => {
     
             const unvalidCells = (9 - columnIndex) + 1;
             if(columnIndex > (9 - shipLength) + 1) {
-                for(let i = 0; i < shipLength; i += 1) {
-                    if(board[cellId + i].storedShip !== false) {
-                        return;
-                    }
-                }
+                
     
                 for(let i = 0; i < unvalidCells; i += 1) {
                     const cell = document.querySelector(`#p${cellId + i}`);
-                    cell.style.background = 'rgb(185, 74, 74)';
+                    if(board[cellId + i].storedShip === false) {
+                        cell.style.background = 'rgb(185, 74, 74)';
+                    }
                 }
             } else {
                 for(let i = 0; i < shipLength; i += 1) {

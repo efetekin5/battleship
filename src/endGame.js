@@ -36,7 +36,7 @@ const endGame = (pBoard, aiBoard, isPlayerWon) => {
 
         const axisButton = document.querySelector('.axisButton');
         if(axisButton !== null) {
-            axisButton.style.display = 'none';
+            axisButton.remove();
         }
 
         winBackground.style.display = 'none';
